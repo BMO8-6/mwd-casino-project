@@ -3,7 +3,7 @@ import { html } from "https://unpkg.com/htm/preact/standalone.module.js";
 export default function HomeView({ userId }) {
   console.log("Displaying HomeView");
 
-  // old html, placeholder for UI logic and interactions
+  // old html, placeholder for UI logic and interactions for Home Page
   return html`
     <p>
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod

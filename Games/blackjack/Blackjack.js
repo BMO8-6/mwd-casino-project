@@ -15,7 +15,6 @@ export default function BlackjackView({ userId }) {
     fetchGameData(userId).then((data) => setGameData(data));
   }, [userId]);
 
-  // console.log(gameData);
   console.log("Displaying BlackjackView");
   return html`<${UI} />`;
 }
@@ -27,10 +26,9 @@ export const fetchGameData = (userId) => {
   return axios
     .get(url)
     .then((response) => {
-      // console.log(response);
-      // console.log("response.data.userId: " + response.data.userId);
+      console.log("response.data.userId: " + response.data.userId);
       const userId = response.data.userId;
-      // console.log(userId);
+      console.log(userId);
       return response.data ? userId : null; // returns userGame if there is one for the current user
     })
     .catch((err) => {
@@ -43,10 +41,10 @@ export const placeBet = (userId, amount) => {
   return fetchGameData(userId).then((gameData) => {
     if (gameData) {
       gameData.currentBet = amount;
-      // console.log(`User ${userId} placed a bet of $${amount}.`);
+      console.log(`User ${userId} placed a bet of $${amount}.`);
       return gameData;
     } else {
-      // console.error("User not found");
+      console.error("User not found");
     }
   });
 };
@@ -56,10 +54,10 @@ export const handleWin = (userId, amountWon) => {
   return fetchGameData(userId).then((gameData) => {
     if (gameData) {
       gameData.win += amountWon;
-      // console.log(`User ${userId} won $${amountWon}.`);
+      console.log(`User ${userId} won $${amountWon}.`);
       return gameData;
     } else {
-      // console.error("User not found");
+      console.error("User not found");
     }
   });
 };
@@ -69,10 +67,10 @@ export const handleLoss = (userId, amountLost) => {
   return fetchGameData(userId).then((gameData) => {
     if (gameData) {
       gameData.loss += amountLost;
-      // console.log(`User ${userId} lost $${amountLost}.`);
+      console.log(`User ${userId} lost $${amountLost}.`);
       return gameData;
     } else {
-      // console.error("User not found");
+      console.error("User not found");
     }
   });
 };

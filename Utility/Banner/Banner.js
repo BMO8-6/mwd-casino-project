@@ -16,7 +16,8 @@ export default function BannerView() {
   }, []);
 
   // at the moment, since we only have one user, we just pass
-  // the whole users object
+  // the whole users object. In the future, we might do something
+  // with cookies or just keep 1 user depending on project requirements
   console.log("Displaying banner");
   return html`
     <div class="banner">

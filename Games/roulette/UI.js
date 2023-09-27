@@ -20,7 +20,23 @@ export default function UI({ userId }) {
       <article><p style="color: black; display: inline;">15</p></article>
     </div>
     <hr />
-    <p>Congrats! You've won $10k.</p>
-    <button type="button">Spin again</button>
+    <div class="actions">
+      <form action="/action_page.php">
+        <div>
+          <label for="bet">Choose your bet size: </label><br />
+          <select id="bet" name="bet">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="50">50</option>
+            <option value="500">500</option>
+          </select>
+        </div>
+
+        <div><input type="submit" value="Get Chip" /></div>
+      </form>
+      <a>
+        <img src="../../images/roulette-table.jpg" />
+      </a>
+    </div>
   `;
 }

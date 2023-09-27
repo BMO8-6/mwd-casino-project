@@ -27,6 +27,26 @@ h1 {
   text-align: center;
 }
 
+.actions {
+  display: flex;
+  background: rgb(150, 150, 150);
+  padding: 30px;
+  border-radius: 5px;
+  justify-content: space-evenly;
+}
+
+.actions > form > div {
+  padding: 10px;
+}
+
+.actions > a {
+  width: 400px;
+}
+
+.actions > a > img {
+  width: 100%;
+}
+
 @media all and (max-width: 650px) {
   .table {
     flex-direction: column;
