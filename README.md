@@ -1,7 +1,2 @@
-# mwd-casino-project
-# mwd-casino-project
-# mwd-casino-project
-# mwd-casino-project
-# mwd-casino-project
-# mwd-casino-project
-# mwd-casino-project
+Joshua Bih | jbih2@nd.edu
+Jacob Gutierrez | jgutier7@nd.edu

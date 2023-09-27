@@ -1,0 +1,38 @@
+[
+  {
+    "id": 0,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "email": "jdoe@gmail.com",
+    "password": "jdoe23",
+    "balance": 5000,
+    "gamesPlayed": {
+      "blackjack": {
+        "timesPlayed": 23,
+        "money": {
+          "won": 700,
+          "lost": 300
+        },
+        "record": {
+          "wins": 15,
+          "losses": 8
+        },
+        "lastPlayed": "2023-01-10T06:14:00Z"
+      },
+      "roulette": {
+        "timesPlayed": 10,
+        "money": {
+          "won": 500,
+          "lost": 200
+        },
+        "record": {
+          "wins": 6,
+          "losses": 4
+        },
+        "lastPlayed": "2023-01-10T06:14:00Z"
+      }
+    },
+    "achievements": ["Blackjack Rookie", "Roulette Pro"],
+    "favorites": ["blackjack"]
+  }
+]
