@@ -1,12 +1,8 @@
-import {
-  html,
-  useEffect,
-  useState
-} from "https://unpkg.com/htm/preact/standalone.module.js";
+import React, { useEffect, useState } from "react";
 import { getAllUsers } from "../../Services/Users.js";
 import Balance from "./Balance.js";
 
-export default function BannerView() {
+const BannerView = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -19,19 +15,21 @@ export default function BannerView() {
   // the whole users object. In the future, we might do something
   // with cookies or just keep 1 user depending on project requirements
   console.log("Displaying banner");
-  return html`
-    <div class="banner">
-      <div class="logo">
+  return (
+    <div className="banner">
+      <div className="logo">
         <a href="../../index.html">
-          <img src="../../images/logo.jpg" />
+          <img src="../../images/logo.jpg" alt="logo"/>
         </a>
-        <${Balance} users=${users} />
+        <Balance users={users} />
       </div>
-      <ul class="navigation">
-        <li><a href="/index.html">Home</a></li>
-        <li><a href="/Games/blackjack/blackjack.html">Blackjack</a></li>
-        <li><a href="/Games/roulette/roulette.html">Roulette</a></li>
+      <ul className="navigation">
+        <li><a href="/public/index.html">Home</a></li>
+        <li><a href="/src/Games/blackjack/blackjack.html">Blackjack</a></li>
+        <li><a href="/src/Games/roulette/roulette.html">Roulette</a></li>
       </ul>
     </div>
-  `;
-}
+  );
+};
+
+export default BannerView;

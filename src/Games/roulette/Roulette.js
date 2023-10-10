@@ -1,13 +1,9 @@
-import {
-  html,
-  useEffect,
-  useState
-} from "https://unpkg.com/htm/preact/standalone.module.js";
+import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
 
 const axios = window.axios;
 
-export default function BlackjackView({ userId }) {
+const RouletteView = ({ userId }) => {
   // Fetch the game data when the component mounts
   const [gameData, setGameData] = useState();
 
@@ -15,21 +11,25 @@ export default function BlackjackView({ userId }) {
     fetchGameData(userId).then((data) => setGameData(data));
   }, [userId]);
 
-  console.log("Displaying BlackjackView");
-  return html`<${UI} />`;
-}
+  console.log(gameData);
+  console.log("Displaying RouletteView");
+  // old html, placeholder for UI logic and interactions
+  return (
+    <UI />
+  );
+};
 
 // fetch data from json based on userid
 export const fetchGameData = (userId) => {
-  const url = "./Games/blackjack/blackjack.json";
-  // console.log(url);
+  const url = "./Games/roulette/roulette.json";
+  console.log(url);
   return axios
     .get(url)
     .then((response) => {
       console.log("response.data.userId: " + response.data.userId);
       const userId = response.data.userId;
       console.log(userId);
-      return response.data ? userId : null; // returns userGame if there is one for the current user
+      return userGame ? userGame : null; // returns userGame if there is one for the current user
     })
     .catch((err) => {
       console.log("Fetch Game Data Error: ", err);
@@ -99,19 +99,26 @@ export const calculateScore = (cards) => {
   return score;
 };
 
-// Basic Blackjack Rules:
+export default RouletteView;
 
-// The goal of blackjack is to beat the dealer's hand without going over 21.
-// Face cards are worth 10. Aces are worth 1 or 11, whichever makes a better hand.
-// Each player starts with two cards, one of the dealer's cards is hidden until the end.
-// To 'Hit' is to ask for another card. To 'Stand' is to hold your total and end your turn.
-// If you go over 21 you bust, and the dealer wins regardless of the dealer's hand.
-// If you are dealt 21 from the start (Ace & 10), you got a blackjack.
-// Blackjack usually means you win 1.5 the amount of your bet. Depends on the casino.
-// Dealer will hit until his/her cards total 17 or higher.
-// Doubling is like a hit, only the bet is doubled and you only get one more card.
-// Split can be done when you have two of the same card - the pair is split into two hands.
-// Splitting also doubles the bet, because each new hand is worth the original bet.
-// You can only double/split on the first move, or first move of a hand created by a split.
-// You cannot play on two aces after they are split.
-// You can double on a hand resulting from a split, tripling or quadrupling you bet.
+// Basic Roulette Rules:
+
+// Each spin of the wheel provides a multitude of options for the player.
+// A player may bet on single numbers, rows of numbers, or on adjacent numbers.
+// A player also may play colors, odd or even numbers, among others.
+// A bet on a single number pays 35 to 1, including the 0 and 00.
+// Bets on red or black, odd or even pay 1 for 1, or even money.
+
+// Roulette Bets & Payouts
+// Single number bet pays 35 to 1. Also called “straight up.”
+// Double number bet pays 17 to 1. Also called a “split.”
+// Three number bet pays 11 to 1. Also called a “street.”
+// Four number bet pays 8 to 1. Also called a “corner bet.”
+// Five number bet pays 6 to 1. Only one specific bet which includes the following numbers: 0-00-1-2-3.
+// Six number bets pays 5 to 1. Example: 7, 8, 9, 10, 11, 12. Also called a “line.”
+// Twelve numbers or dozens (first, second, third dozen) pays 2 to 1.
+// Column bet (12 numbers in a row) pays 2 to 1.
+// 18 numbers (1-18) pays even money.
+// 18 numbers (19-36) pays even money.
+// Red or black pays even money.
+// Odd or even bets pay even money.
