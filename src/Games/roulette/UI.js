@@ -13,18 +13,18 @@ const UI = ({ userId }) => {
       <p>
         Here's the results from the spin:
       </p>
-      <div class="table">
-        <article><p style="color: red; display: inline;">3</p></article>
-        <article><p style="color: black; display: inline;">26</p></article>
-        <article><p style="color: green; display: inline;">0</p></article>
-        <article><p style="color: red; display: inline;">32</p></article>
-        <article><p style="color: black; display: inline;">15</p></article>
+      <div className="table">
+        <article><p style={{color: "red", display: "inline"}}>3</p></article>
+        <article><p style={{color: "black", display: "inline"}}>26</p></article>
+        <article><p style={{color: "green", display: "inline"}}>0</p></article>
+        <article><p style={{color: "red", display: "inline"}}>32</p></article>
+        <article><p style={{color: "black", display: "inline"}}>15</p></article>
       </div>
       <hr />
-      <div class="actions">
+      <div className="actions">
         <form action="/action_page.php">
           <div>
-            <label for="bet">Choose your bet size: </label><br />
+            <label htmlFor="bet">Choose your bet size: </label><br />
             <select id="bet" name="bet">
               <option value="5">5</option>
               <option value="10">10</option>
@@ -36,9 +36,11 @@ const UI = ({ userId }) => {
           <div><input type="submit" value="Get Chip" /></div>
         </form>
         <a>
-          <img src="../../images/roulette-table.jpg" />
+          <img src={require("../../images/roulette-table.jpg")} alt="a roulette table"/>
         </a>
       </div>
     </div>
   );
 };
+
+export default UI;

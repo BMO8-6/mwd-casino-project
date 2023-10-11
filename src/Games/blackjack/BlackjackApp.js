@@ -2,7 +2,7 @@ import React from "react";
 import Banner from "../../Utility/Banner/Banner.js";
 import BlackjackView from "./Blackjack.js";
 
-const App = () => {
+const BlackjackApp = () => {
   console.log("Returning Blackjack Page");
   return (
     <div>
@@ -11,4 +11,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default BlackjackApp;

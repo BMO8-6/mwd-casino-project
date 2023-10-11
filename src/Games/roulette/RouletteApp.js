@@ -2,7 +2,7 @@ import React from "react";
 import Banner from "../../Utility/Banner/Banner.js";
 import RouletteView from "./Roulette.js";
 
-const App = () => {
+const RouletteApp = () => {
   console.log("Returning Roulette Page");
   return (
     <div>
@@ -11,4 +11,4 @@ const App = () => {
   );
 }
 
-export default App;
+export default RouletteApp;

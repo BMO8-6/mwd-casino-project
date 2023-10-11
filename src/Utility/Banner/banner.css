@@ -17,11 +17,11 @@ body {
   border-radius: 5px;
 }
 
-.navigation li {
+.navigation Link {
   display: inline-block;
 }
 
-.navigation li:hover {
+.navigation Link:hover {
   background: #2a38479d;
 }
 

@@ -9,15 +9,15 @@ const UI = () => {
       <h1>Blackjack</h1>
       <hr />
 
-      <div class="table">
-        <div class="hand">
+      <div className="table">
+        <div className="hand">
           The dealer's hand (temp placeholders):
           <ul>
             <li>♠3</li>
             <li>♠2</li>
           </ul>
         </div>
-        <div class="hand">
+        <div className="hand">
           Here is your hand (temp placeholders):
           <ul>
             <li>♠A</li>
@@ -27,10 +27,10 @@ const UI = () => {
       </div>
 
       <hr />
-      <div class="actions">
+      <div className="actions">
         <form action="/action_page.php">
           <div>
-            <label for="bet">Choose your bet size: </label><br />
+            <label htmlFor="bet">Choose your bet size: </label><br />
             <select id="bet" name="bet">
               <option value="5">5</option>
               <option value="10">10</option>
@@ -40,13 +40,13 @@ const UI = () => {
           </div>
           <div>
             <input type="radio" id="hit" name="action" value="hit" checked />
-            <label for="hit">Hit</label><br />
+            <label htmlFor="hit">Hit</label><br />
             <input type="radio" id="stand" name="action" value="stand" />
-            <label for="stand">Stand</label><br />
+            <label htmlFor="stand">Stand</label><br />
             <input type="radio" id="double" name="action" value="double" />
-            <label for="double">Double</label><br />
+            <label htmlFor="double">Double</label><br />
             <input type="radio" id="split" name="action" value="split" />
-            <label for="split">Split</label><br />
+            <label htmlFor="split">Split</label><br />
           </div>
           <div><input type="submit" value="Submit" /></div>
         </form>

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
+import "./roulette.css";
 
 const axios = window.axios;
 
 const RouletteView = ({ userId }) => {
-  // Fetch the game data when the component mounts
-  const [gameData, setGameData] = useState();
+  // // Fetch the game data when the component mounts
+  // const [gameData, setGameData] = useState();
 
-  useEffect(() => {
-    fetchGameData(userId).then((data) => setGameData(data));
-  }, [userId]);
+  // useEffect(() => {
+  //   fetchGameData(userId).then((data) => setGameData(data));
+  // }, [userId]);
 
-  console.log(gameData);
   console.log("Displaying RouletteView");
   // old html, placeholder for UI logic and interactions
   return (
@@ -19,85 +19,85 @@ const RouletteView = ({ userId }) => {
   );
 };
 
-// fetch data from json based on userid
-export const fetchGameData = (userId) => {
-  const url = "./Games/roulette/roulette.json";
-  console.log(url);
-  return axios
-    .get(url)
-    .then((response) => {
-      console.log("response.data.userId: " + response.data.userId);
-      const userId = response.data.userId;
-      console.log(userId);
-      return userGame ? userGame : null; // returns userGame if there is one for the current user
-    })
-    .catch((err) => {
-      console.log("Fetch Game Data Error: ", err);
-    });
-};
+// // fetch data from json based on userid
+// export const fetchGameData = (userId) => {
+//   const url = "./Games/roulette/roulette.json";
+//   console.log(url);
+//   return axios
+//     .get(url)
+//     .then((response) => {
+//       console.log("response.data.userId: " + response.data.userId);
+//       const userId = response.data.userId;
+//       console.log(userId);
+//       return userGame ? userGame : null; // returns userGame if there is one for the current user
+//     })
+//     .catch((err) => {
+//       console.log("Fetch Game Data Error: ", err);
+//     });
+// };
 
-// placing a bet (doesn't save anywhere yet)
-export const placeBet = (userId, amount) => {
-  return fetchGameData(userId).then((gameData) => {
-    if (gameData) {
-      gameData.currentBet = amount;
-      console.log(`User ${userId} placed a bet of $${amount}.`);
-      return gameData;
-    } else {
-      console.error("User not found");
-    }
-  });
-};
+// // placing a bet (doesn't save anywhere yet)
+// export const placeBet = (userId, amount) => {
+//   return fetchGameData(userId).then((gameData) => {
+//     if (gameData) {
+//       gameData.currentBet = amount;
+//       console.log(`User ${userId} placed a bet of $${amount}.`);
+//       return gameData;
+//     } else {
+//       console.error("User not found");
+//     }
+//   });
+// };
 
-// handles win and prints what user won how much
-export const handleWin = (userId, amountWon) => {
-  return fetchGameData(userId).then((gameData) => {
-    if (gameData) {
-      gameData.win += amountWon;
-      console.log(`User ${userId} won $${amountWon}.`);
-      return gameData;
-    } else {
-      console.error("User not found");
-    }
-  });
-};
+// // handles win and prints what user won how much
+// export const handleWin = (userId, amountWon) => {
+//   return fetchGameData(userId).then((gameData) => {
+//     if (gameData) {
+//       gameData.win += amountWon;
+//       console.log(`User ${userId} won $${amountWon}.`);
+//       return gameData;
+//     } else {
+//       console.error("User not found");
+//     }
+//   });
+// };
 
-// handles looss
-export const handleLoss = (userId, amountLost) => {
-  return fetchGameData(userId).then((gameData) => {
-    if (gameData) {
-      gameData.loss += amountLost;
-      console.log(`User ${userId} lost $${amountLost}.`);
-      return gameData;
-    } else {
-      console.error("User not found");
-    }
-  });
-};
+// // handles looss
+// export const handleLoss = (userId, amountLost) => {
+//   return fetchGameData(userId).then((gameData) => {
+//     if (gameData) {
+//       gameData.loss += amountLost;
+//       console.log(`User ${userId} lost $${amountLost}.`);
+//       return gameData;
+//     } else {
+//       console.error("User not found");
+//     }
+//   });
+// };
 
-// this caluclates the score for the game
-export const calculateScore = (cards) => {
-  let score = 0;
-  let aces = 0;
+// // this caluclates the score for the game
+// export const calculateScore = (cards) => {
+//   let score = 0;
+//   let aces = 0;
 
-  cards.forEach((card) => {
-    if (["J", "Q", "K"].includes(card.value)) {
-      score += 10;
-    } else if (card.value === "A") {
-      aces += 1;
-      score += 11;
-    } else {
-      score += parseInt(card.value, 10);
-    }
-  });
+//   cards.forEach((card) => {
+//     if (["J", "Q", "K"].includes(card.value)) {
+//       score += 10;
+//     } else if (card.value === "A") {
+//       aces += 1;
+//       score += 11;
+//     } else {
+//       score += parseInt(card.value, 10);
+//     }
+//   });
 
-  while (score > 21 && aces > 0) {
-    score -= 10;
-    aces -= 1;
-  }
+//   while (score > 21 && aces > 0) {
+//     score -= 10;
+//     aces -= 1;
+//   }
 
-  return score;
-};
+//   return score;
+// };
 
 export default RouletteView;
 
