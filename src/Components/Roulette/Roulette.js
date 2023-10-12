@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
-import "./roulette.css";
+import "../../styles/roulette.css";
 
 const axios = window.axios;
 

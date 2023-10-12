@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Balance from "./Balance.js";
-import "./banner.css";
+import "../../styles/banner.css";
 
 const BannerView = () => {
   // doesn't handle auth atm

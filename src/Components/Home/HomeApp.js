@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../Banner/Banner.js";
+import Banner from "../../Components/Banner/Banner.js";
 import HomeView from "./Home.js";
 
 const HomeApp = () => {

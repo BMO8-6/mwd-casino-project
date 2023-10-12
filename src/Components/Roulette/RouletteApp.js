@@ -1,5 +1,5 @@
 import React from "react";
-import Banner from "../../Utility/Banner/Banner.js";
+import Banner from "../../Components/Banner/Banner.js";
 import RouletteView from "./Roulette.js";
 
 const RouletteApp = () => {
