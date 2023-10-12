@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
-import "./blackjack.css";
+import "../../styles/blackjack.css";
 
 const axios = window.axios;
 
@@ -18,6 +18,8 @@ const BlackjackView = ({ userId }) => {
   );
 };
 
+
+// ''' future game logic '''
 // // fetch data from json based on userid
 // export const fetchGameData = (userId) => {
 //   const url = "./Games/blackjack/blackjack.json";
