@@ -97,3 +97,22 @@ div.logo img {
     margin-left: auto;
   }
 }
+
+/* button animatiion for the nav bar  */
+.nav-link {
+  transition: all 0.3s ease; 
+  color: white; 
+  text-decoration: none; 
+  padding: 5px 10px; 
+}
+
+.nav-link:hover {
+  background-color: rgba(0, 0, 0, 0.1); 
+  color: gold;
+  border-radius: 5px;
+}
+
+
+.nav-link:active {
+  transform: scale(0.95); 
+}

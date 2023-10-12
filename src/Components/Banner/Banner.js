@@ -15,9 +15,10 @@ const BannerView = () => {
         <Balance />
       </div>
       <ul className="navigation">
-        <Link to="/">Home</Link>
-        <Link to="/blackjack">Blackjack</Link>
-        <Link to="/roulette">Roulette</Link>
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/blackjack" className="nav-link">Blackjack</Link>
+        <Link to="/roulette" className="nav-link">Roulette</Link>
+
       </ul>
     </div>
   );
