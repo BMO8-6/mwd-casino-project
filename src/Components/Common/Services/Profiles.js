@@ -1,6 +1,6 @@
 import Parse from "parse"
 
-export const getAllProfilesWithUsers = () => {
+export const getAllProfiles = () => {
     const Profile = Parse.Object.extend("Profile");
     const query = new Parse.Query(Profile);
   
