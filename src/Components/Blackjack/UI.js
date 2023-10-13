@@ -3,6 +3,7 @@ import React from "react";
 const UI = () => {
   console.log("Displaying BlackjackView");
 
+  /* pull parse data and implement game logic */
   // old html, placeholder for UI logic and interactions
   return (
     <div>

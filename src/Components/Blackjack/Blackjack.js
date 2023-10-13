@@ -14,7 +14,7 @@ const BlackjackView = ({ userId }) => {
 
   console.log("Displaying BlackjackView");
   return (
-    <UI />
+    < UI />
   );
 };
 

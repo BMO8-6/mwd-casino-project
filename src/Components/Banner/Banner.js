@@ -18,7 +18,6 @@ const BannerView = () => {
         <Link to="/" className="nav-link">Home</Link>
         <Link to="/blackjack" className="nav-link">Blackjack</Link>
         <Link to="/roulette" className="nav-link">Roulette</Link>
-
       </ul>
     </div>
   );
