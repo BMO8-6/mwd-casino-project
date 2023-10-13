@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
 import "../../styles/blackjack.css";
 
-const axios = window.axios;
-
 const BlackjackView = ({ userId }) => {
   // // Fetch the game data when the component mounts
   // const [gameData, setGameData] = useState();

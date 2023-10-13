@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getAllProfilesWithUsers } from "../Common/Services/Profiles.js";  // Assuming you've renamed and updated the Users.js to Profiles.js
+import { getAllProfilesWithUsers } from "../Common/Services/Profiles.js";  
 
 const Balance = () => {
   const [profiles, setProfiles] = useState([]);

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import UI from "./UI.js";
 import "../../styles/roulette.css";
 
-const axios = window.axios;
 
 const RouletteView = ({ userId }) => {
   // // Fetch the game data when the component mounts
