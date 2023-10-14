@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { getAllProfilesWithUsers } from "../Common/Services/Profiles.js";  
+import { getAllProfiles } from "../Common/Services/Profiles.js";  
 
 const Balance = () => {
   const [profiles, setProfiles] = useState([]);
 
   useEffect(() => {
-    getAllProfilesWithUsers().then((profiles) => {
+    getAllProfiles().then((profiles) => {
       setProfiles(profiles);
     });
   }, []);

@@ -62,14 +62,14 @@
 
 // export default HomeView;
 import React, { useState, useEffect } from "react";
-import { getAllProfilesWithUsers } from "../Common/Services/Profiles.js"; // Adjusted the import path to the new service file
+import { getAllProfiles } from "../Common/Services/Profiles.js"; // Adjusted the import path to the new service file
 import "../../styles/home.css";
 
 const HomeView = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    getAllProfilesWithUsers().then((profiles) => {
+    getAllProfiles().then((profiles) => {
       if (profiles && profiles.length > 0) {
         setProfile(profiles[0]);
       }

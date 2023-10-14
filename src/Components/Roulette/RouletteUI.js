@@ -33,7 +33,8 @@ const RouletteUI = ({ onClick }) => {
             </select>
           </div>
 
-          <div><input type="button" onChange={onClick}>Submit</input></div>
+          <div><input type="button" value="Submit" onChange={onClick} /></div>
+
         </form>
         <a>
           <img src={require("../../images/roulette-table.jpg")} alt="a roulette table"/>

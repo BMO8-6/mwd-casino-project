@@ -49,7 +49,8 @@ const BlackjackUI = ({ onClick }) => {
             <input type="radio" id="split" name="action" value="split" />
             <label htmlFor="split">Split</label><br />
           </div>
-          <div><input type="button" onChange={onClick}>Submit</input></div>
+          <div><input type="button" value="Submit" onChange={onClick} /></div>
+
         </form>
       </div>
     </div>
