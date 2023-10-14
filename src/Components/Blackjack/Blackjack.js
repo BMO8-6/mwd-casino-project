@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from "react";
-import UI from "./UI.js";
+import BlackjackUI from "./BlackjackUI.js";
 import "../../styles/blackjack.css";
 
 const BlackjackView = ({ userId }) => {
+  // Flags in the state to watch for add/remove updates
+  const [submit, setSubmit] = useState(false);
+
+  // UseEffect that runs when changes
+  // are made to the state variables/flags
+  useEffect(() => {
+    // Check for add flag and make sure name state variable is defined
+    // does nothing for now
+    if (submit) {
+      // createLesson(name).then((newLesson) => {
+      //   setSubmit(false);
+      // });
+    }
+  });
+    
+  // Handler to handle event passed from child submit button
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    // Trigger add flag to create lesson and
+    // re-render list with new lesson
+    setSubmit(true);
+  };
+
   // // Fetch the game data when the component mounts
   // const [gameData, setGameData] = useState();
 
@@ -12,7 +35,7 @@ const BlackjackView = ({ userId }) => {
 
   console.log("Displaying BlackjackView");
   return (
-    < UI />
+    < BlackjackUI onClick={onClickHandler} />
   );
 };
 

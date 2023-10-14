@@ -1,6 +1,6 @@
 import React from "react";
 
-const UI = () => {
+const BlackjackUI = ({ onClick }) => {
   console.log("Displaying BlackjackView");
 
   /* pull parse data and implement game logic */
@@ -49,11 +49,11 @@ const UI = () => {
             <input type="radio" id="split" name="action" value="split" />
             <label htmlFor="split">Split</label><br />
           </div>
-          <div><input type="submit" value="Submit" /></div>
+          <div><input type="button" onChange={onClick}>Submit</input></div>
         </form>
       </div>
     </div>
   );
 };
 
-export default UI;
+export default BlackjackUI;
