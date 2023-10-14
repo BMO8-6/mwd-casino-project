@@ -1,10 +1,32 @@
 import React, { useEffect, useState } from "react";
-import UI from "./UI.js";
+import RouletteUI from "./RouletteUI.js";
 import "../../styles/roulette.css";
 
-const axios = window.axios;
 
 const RouletteView = ({ userId }) => {
+  // Flags in the state to watch for add/remove updates
+  const [submit, setSubmit] = useState(false);
+
+  // UseEffect that runs when changes
+  // are made to the state variables/flags
+  useEffect(() => {
+    // Check for add flag and make sure name state variable is defined
+    // does nothing for now
+    if (submit) {
+      // createLesson(name).then((newLesson) => {
+      //   setSubmit(false);
+      // });
+    }
+  });
+    
+  // Handler to handle event passed from child submit button
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    // Trigger add flag to create lesson and
+    // re-render list with new lesson
+    setSubmit(true);
+  };
+  
   // // Fetch the game data when the component mounts
   // const [gameData, setGameData] = useState();
 
@@ -15,7 +37,7 @@ const RouletteView = ({ userId }) => {
   console.log("Displaying RouletteView");
   // old html, placeholder for UI logic and interactions
   return (
-    <UI />
+    <RouletteUI onClick={onClickHandler} />
   );
 };
 

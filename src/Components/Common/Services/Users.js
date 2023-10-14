@@ -1,6 +1,7 @@
 import Parse from "parse";
 
 /* SERVICE FOR PARSE SERVER OPERATIONS */
+/* note: we changed our set up in parse so we might not use these, but here for reference */
 
 // // CREATE operation - new lesson with Name
 // export const createLesson = (Name) => {

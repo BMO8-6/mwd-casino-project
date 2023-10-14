@@ -1,6 +1,6 @@
 import React from "react";
 
-const UI = ({ userId }) => {
+const RouletteUI = ({ onClick }) => {
   console.log("Displaying RouletteView");
 
   // old html, placeholder for UI logic and interactions
@@ -33,7 +33,7 @@ const UI = ({ userId }) => {
             </select>
           </div>
 
-          <div><input type="submit" value="Get Chip" /></div>
+          <div><input type="button" onChange={onClick}>Submit</input></div>
         </form>
         <a>
           <img src={require("../../images/roulette-table.jpg")} alt="a roulette table"/>
@@ -43,4 +43,4 @@ const UI = ({ userId }) => {
   );
 };
 
-export default UI;
+export default RouletteUI;
