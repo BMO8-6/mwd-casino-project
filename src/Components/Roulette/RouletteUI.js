@@ -3,6 +3,8 @@ import RouletteGame from "./RouletteGame";
 const RouletteUI = ({ onClick }) => {
   console.log("Displaying RouletteView");
 
+  if (document.getElementById('container')) document.getElementById('container').style.display = 'flex';
+
   return (
     <div>
       <h1>

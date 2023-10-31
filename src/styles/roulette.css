@@ -12,11 +12,12 @@ html, body{
 #container{
 	display: flex;
 	justify-content: center;
-	background-color: #016D29;
+	background-color: #008000;
 	height: 470px;
 	padding: 20px;
 	color: #fff;
 	min-width: 610px;
+	border-radius: 5px;
 }
 
 /*notification*/
