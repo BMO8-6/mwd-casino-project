@@ -1,33 +1,168 @@
-h1 {
-  font-family: "Roboto", sans-serif;
-  font-size: 50px;
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css?family=Bembo|Poppins');
+
+div.App p {
+  font: 0.7rem Bembo, Georgia, Times New Roman, serif;
+  margin: 0;
 }
 
-.table {
-  display: flex;
-  background: rgb(0, 40, 0);
-  padding: 30px;
-  border-radius: 10px;
-  min-width: 225px;
-  justify-content: space-evenly;
+div.App h1 {
+  font: 1.8rem Bembo, Georgia, Times New Roman, serif;
+  color: white;
+  margin: 0.8rem;
 }
 
-.hand {
-  background-color: rgb(0, 150, 0);
-  border-radius: 20px;
-  padding: 20px;
-  margin: 0px 4px;
+div.App h2 {
+  font: 1.6rem Poppins, Georgia, Times New Roman, serif;
+  color: white;
+  margin: 0.2rem;
+}
+
+div.App h3 {
+  font: 1.4rem Bembo, Georgia, Times New Roman, serif;
+  margin: 0.7rem;
   color: white;
 }
 
-.actions {
-  display: flex;
-  background: rgb(150, 150, 150);
-  padding: 30px;
-  border-radius: 5px;
-  justify-content: flex-start;
+div.App h5 {
+  font: 1.2rem Bembo, Georgia, Times New Roman, serif;
+  margin: 15px;
+  color: white;
 }
 
-.actions > form > div {
-  padding: 10px;
+/* Button Styles */
+div.App button {
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  margin: 5px;
+  text-transform: uppercase;
+  background: #694a6e;
+  color: white;
+  font-weight: bold;
+  -webkit-transition: background-color 100ms linear, color 100ms linear;
+  -moz-transition: background-color 100ms linear, color 100ms linear;
+  -o-transition: background-color 100ms linear, color 100ms linear;
+  -ms-transition: background-color 100ms linear, color 100ms linear;
+  transition: background-color 100ms linear, color 100ms linear;
+}
+
+div.App button.lg {
+  font: 1rem Bembo, Arial, sans-serif;
+  padding: 0.4rem 5rem;
+  font-weight: bold;
+}
+
+div.App button.sm {
+  font: 1rem Bembo, Arial, sans-serif;
+  padding: 0.3rem 1rem;
+  font-weight: bold;
+}
+
+div.App button.red {
+  background: rgb(160, 21, 21);
+  color: white;
+}
+
+div.App button.purple {
+  background: rgb(125, 0, 241);
+  color: white;
+}
+
+/* Do not hover on mobile devices */
+@media (hover: hover) {
+  div.App button:hover {
+    background: white;
+    color: #427643;
+  }
+
+  div.App button.red:hover {
+    background: white;
+    color: rgb(160, 21, 21);
+  }
+
+  div.App button.purple:hover {
+    background: white;
+    color: rgb(125, 0, 241);
+  }
+}
+
+/* App Component */
+.App {
+  background: #008000;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 10px 0px;
+  margin: 10px 0px;
+  border-radius: 5px;
+}
+
+/* Hands Component */
+.hands-container {
+}
+
+.Hand {
+}
+
+/* Card Component */
+.cards-container {
+}
+
+.Card {
+  display: inline-block;
+  padding: 0px;
+}
+
+.Card img {
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 175px;
+  width: 120px;
+  margin-left: -90px;
+}
+
+.blankCard {
+  display: inline-block;
+  border: 1px solid black;
+  border-radius: 10px;
+  height: 175px;
+  width: 120px;
+  margin-left: -90px;
+}
+
+/* Stats Component */
+.stats-container {
+  border: 1px solid white;
+  border-radius: 5px;
+  color: white;
+  margin: 25px;
+}
+
+.playerStats {
+  padding: 15px;
+}
+.gameStats {
+  padding: 15px;
+}
+.dealerStats {
+  padding: 15px;
+}
+
+/* Chips Component */
+.chips-container {
+  color: white;
+  margin: 10px;
+}
+
+.chipStats {
+}
+
+.chipBets {
+}
+
+.buyInButtons {
+  padding: 15px;
 }
