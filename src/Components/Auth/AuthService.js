@@ -43,3 +43,20 @@ export const loginUser = (currUser) => {
 export const checkUser = () => {
   return Parse.User.current()?.authenticated;
 };
+
+// logout the user 
+export const logoutUser = () => {
+  return Parse.User.logOut()
+    .then(() => {
+      // This will now be null, and currentUser() will return null
+      const currentUser = Parse.User.current(); 
+      if (currentUser === null) {
+        console.log('Successfully logged out');
+      }
+      return true;
+    })
+    .catch((error) => {
+      console.error('Error while logging out ', error);
+      throw error; // Re-throw the error for the calling function to handle
+    });
+};

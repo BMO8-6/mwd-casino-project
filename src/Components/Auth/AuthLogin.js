@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { checkUser, loginUser } from "./AuthService";
 import AuthForm from "./AuthForm";
 import { useNavigate } from "react-router-dom";
+import "../../styles/auth.css";
 
 const AuthLogin = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ const AuthLogin = () => {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <AuthForm
         user={currentUser}
         isLogin={true}
