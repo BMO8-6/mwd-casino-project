@@ -8,9 +8,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-- Authorization methods for the users
-- Blackjack game now functional
-- Roulette game now functional
+- Authorization methods for the users (registering and logging in)
+- Blackjack game now functional (added game logic and actual user interactions)
+- Roulette game now functional (added game logic and actual user interactions)
 
 ### Changed
   
