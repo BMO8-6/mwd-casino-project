@@ -1,26 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { getAllProfiles } from "../Common/Services/Profiles.js";  
+import { getCurrentUserProfile } from "../Common/Services/Profiles.js";  
 
 const Balance = () => {
-  const [profiles, setProfiles] = useState([]);
+  const [balance, setBalance] = useState(null);
 
   useEffect(() => {
-    getAllProfiles().then((profiles) => {
-      setProfiles(profiles);
+    getCurrentUserProfile().then((profile) => {
+      if (profile) {
+        setBalance(profile.get("balance"));
+      } else {
+        // Handle case when profile is not found
+        console.log("Profile not found for current user.");
+      }
+    }).catch((error) => {
+      console.error("Error fetching current user's profile:", error);
     });
   }, []);
 
-  // when async isn't loaded yet, display placeholder
-  // currently only loads the first profile as auth isn't implemented
-  console.log("loading profiles: ", profiles);
-  if (profiles.length === 0) {
-    return ( 
-      <div className="balance">Current Balance: LOADING...</div>
-    );
+  if (balance === null) {
+    return <div className="balance">Current Balance: LOADING...</div>;
   }
-  return (
-    <div className="balance">Current Balance: ${profiles[0].get("balance")}</div>
-  );
+  return <div className="balance">Current Balance: ${balance}</div>;
 };
 
 export default Balance;

@@ -10,7 +10,6 @@ export const createUser = (newUser) => {
   user.set("password", newUser.password);
   user.set("email", newUser.email);
 
-  console.log("User: ", user);
   return user
     .signUp()
     .then((newUserSaved) => {
@@ -18,6 +17,49 @@ export const createUser = (newUser) => {
     })
     .catch((error) => {
       alert(`Error: ${error.message}`);
+    });
+};
+
+//  creates a Profile for a given user
+export const createProfile = (user) => {
+  const Profile = Parse.Object.extend("Profile");
+  const profile = new Profile();
+  const default_gameData = {
+    "blackjack": {
+      "timesPlayed": 0,
+      "money": {
+        "won": 0,
+        "lost": 0
+      },
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    },
+    "roulette": {
+      "timesPlayed": 0,
+      "money": {
+        "won": 0,
+        "lost": 0
+      },
+      "record": {
+        "wins": 0,
+        "losses": 0
+      }
+    }
+  }
+  profile.set("user", user); // user is the Parse.User object
+  profile.set("balance", 100); // User will start with 100
+
+  profile.set("gameData",default_gameData); // user's default game data
+  console.log("Saving new Profile...", profile)
+  return profile.save()
+    .then((profileCreated) => {
+      console.log("Profile created:", profileCreated);
+      return profileCreated;
+    }).catch((error) => {
+      console.error("Error creating profile:", error);
+      throw error;
     });
 };
 
