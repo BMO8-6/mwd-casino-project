@@ -69,5 +69,4 @@ const AuthRegister = () => {
     </div>
   );
 };
-
 export default AuthRegister;
