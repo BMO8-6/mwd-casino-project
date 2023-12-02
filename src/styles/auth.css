@@ -37,5 +37,32 @@
     max-width: 100%; 
     height: auto;
   }
-  
-  
+ 
+.logout-btn {
+  margin-left: auto;
+  padding: 1em 2em;
+  background: rgb(144, 35, 35);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif; /* Match the font to your nav links */
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 5px; /* Assuming you want the rounded corners */
+}
+
+.logout-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: gold;
+}
+
+.logout-btn:active {
+  transform: scale(0.95);
+}
+
+/* You might need to adjust the font size and line height to match your nav links */
+.logout-btn {
+  font-size: 1em; /* Example size, adjust as needed */
+  line-height: 1.5; /* Example line height, adjust as needed */
+}
+ 
