@@ -15,8 +15,7 @@ const AuthForm = ({ user, isLogin, onChange, onSubmit }) => {
             id="first-name-input"
             value={user.firstName}
             onChange={onChange}
-            name="firstName"
-            placeholder="first name"
+            name="firstName" 
             required
           />
         </div>

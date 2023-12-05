@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { PaymentElement, useStripe, useElements, Elements } from '@stripe/react-stripe-js';
+import { PaymentElement, useStripe, useElements, Elements, CardElement } from '@stripe/react-stripe-js';
 import Parse from 'parse';
 import Banner from "../../Components/Banner/Banner.js";
 import "../../styles/checkout.css";
+import { updateUserBalance } from "../Common/Services/Profiles.js";  
 
-const CheckoutForm = ({ stripePromise }) => {
-  const [clientSecret, setClientSecret] = useState('');
-  const [amount, setAmount] = useState('');
+const CheckoutForm = ({ clientSecret, setClientSecret, amount, setAmount }) => {
+  // const [amount, setAmount] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
   const stripe = useStripe();
   const elements = useElements();
 
   // handle change in amount in text area 
   const handleAmountChange = (event) => {
-    setAmount(event.target.value);
+    const newAmount = event.target.value;
+    console.log("Amount entered:", newAmount); 
+    setAmount(newAmount); 
   };
 
   // submitting payment 
@@ -24,7 +26,7 @@ const CheckoutForm = ({ stripePromise }) => {
     const amountInCents = Math.round(parseFloat(amount) * 100);
     try {
       const result = await Parse.Cloud.run('createPaymentIntent', { amount: amountInCents, currency: 'usd' });
-      setClientSecret(result.clientSecret);
+      setClientSecret(result.clientSecret); 
       setIsProcessing(false);
     } catch (error) {
       console.error('Error creating payment intent:', error);
@@ -38,23 +40,30 @@ const CheckoutForm = ({ stripePromise }) => {
       console.log("Stripe has not loaded");
       return;
     }
+    console.log("Amount at payment confirmation:", amount); // Debug: log amount before processing
+
+    console.log("Payment Succeeded")
+    console.log(amount)
+    let amountInDollars = parseFloat(amount);
+    await updateUserBalance(amountInDollars);
+    alert(`Success! Added $${amountInDollars} to account.`);
   
     setIsProcessing(true);
-  
-    try {
-      // Assuming clientSecret is correctly set to the PaymentIntent's client secret
+    console.log("Client Secret: ", clientSecret)
+    try { 
       const result = await stripe.confirmPayment({
-        clientSecret,
+        elements,
         confirmParams: {
-          return_url: "http://localhost:3000/success",
+          return_url: `${window.location.origin}/`
         },
       });
-  
+      console.log("Result: ",result)
       if (result.error) {
         console.error('Payment confirmation error:', result.error);
-        // Handle specific error scenarios here, if needed
       } else {
-        console.log(`Payment initiated, redirecting or awaiting payment confirmation.`);
+        let amountInDollars = parseFloat(amount);
+        await updateUserBalance(amountInDollars);
+        alert(`Success! Added $${amountInDollars.toFixed(2)} to account.`);
       }
     } catch (error) {
       console.error('Error during payment confirmation:', error);
@@ -63,55 +72,25 @@ const CheckoutForm = ({ stripePromise }) => {
     }
   };
   
-  
-  // appearance of Stripe's PaymentElement since it looked ugly 
-  const appearance = {
-    theme: 'stripe',
-    variables: {
-      colorPrimary: '#902323', 
-      colorBackground: '#f9f9f9', 
-      colorText: '#333', 
-      colorDanger: '#df1b41',
-      borderRadius: '10px',
-      spacingUnit: '5px' 
-    },
-    rules: {
-      '.Input': {
-        backgroundColor: 'var(--colorBackground)',
-        color: 'var(--colorText)',
-      },
-      '.Block': {
-        backgroundColor: 'var(--colorBackground)',
-      },
-    },
-  };
-
   return (
     <div>
       <Banner/>
-      {!clientSecret && (
-        <div className="checkout-container">
-        <form onSubmit={handlePaymentIntent}>
+      <div className="checkout-container">
+        <form onSubmit={clientSecret ? handlePaymentConfirmation : handlePaymentIntent}>
+          {!clientSecret && (
             <input
-            type="number"
-            value={amount}
-            onChange={handleAmountChange}
-            placeholder="Enter amount of money you'd like to add to your balance (US Dollar)"
+              type="number"
+              value={amount}
+              onChange={handleAmountChange}
+              placeholder="Enter amount of money you'd like to add to your balance (US Dollar)"
             />
-            <button disabled={isProcessing || !amount} >Add Funds</button>
+          )}
+          {clientSecret && <PaymentElement />}
+          <button disabled={isProcessing || (!amount && !clientSecret)} className='button'>
+            {clientSecret ? 'Confirm Payment' : 'Add Funds'}
+          </button>
         </form>
-        </div>
-      )}
-      {clientSecret && (
-        <div className="checkout-container">
-        <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
-          <form onSubmit={handlePaymentConfirmation}>
-            <PaymentElement />
-            <button disabled={!stripe} className='button'>Confirm Payment</button>
-          </form>
-        </Elements>
-        </div>
-      )}
+      </div>
     </div>
   );
 };

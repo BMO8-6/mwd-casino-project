@@ -14,3 +14,23 @@ export const getCurrentUserProfile = () => {
 
   return query.first(); // Use first to get the single profile
 };
+
+export const updateUserBalance = async (amountToAdd) => {
+  console.log("Updating user balalnce. Adding $", amountToAdd);
+  try {
+    const userProfile = await getCurrentUserProfile();
+    if (userProfile) {
+      let currentBalance = userProfile.get("balance");
+      console.log("Adding to current balance of: ", currentBalance);
+      let newBalance = currentBalance + amountToAdd;
+      userProfile.set("balance", newBalance);
+      await userProfile.save();
+      return newBalance;
+    } else {
+      throw new Error("User profile not found.");
+    }
+  } catch (error) {
+    console.error("Error updating user's balance:", error);
+    throw error;
+  }
+};

@@ -6,7 +6,7 @@ import "../../styles/banner.css";
 
 const BannerView = () => {
   // doesn't handle auth atm
-  console.log("Displaying banner");
+  // console.log("Displaying banner");
   return (
     <div className="banner">
       <div className="logo">
