@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [0.4.0] - 2023-12-04
 
 ### Added
+- Logout Function
+- Checkout Ability. User can add to their balance by adding funds to their Profile via the Checkout tab
+- Home Page now displays the current User's profile
 
 ### Changed
 
