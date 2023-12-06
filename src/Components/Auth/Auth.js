@@ -20,7 +20,7 @@ const AuthModule = () => {
       {/* <div className="auth-logo">
         <img src="../../images/logo.jpg" alt="Logo" />
       </div> */}
-      <h1>Welcome!</h1>
+      <h1>Welcome to our online casino!</h1>
       <p>Please register or log in to continue.</p>
       <Link to="/auth/register">
         <button>Register</button>

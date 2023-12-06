@@ -1,18 +1,35 @@
 // this code was taken from https://codepen.io/ozboware/pen/QWqEmgE, written by
 // ozboware, and is under a free-use license
 // Parts of the code were modified to work in this use-case
+import React, { useEffect, useState } from "react";
+import { getCurrentUserProfile } from "../Common/Services/Profiles.js"; // Adjust the path as needed
 
 let ranFlag = false;
 let spinningFlag = false;
 
+
 const RouletteGame = () => {
+  	let [bankValue, setBankValue] = useState(1000);
+  	let [currentBet, setCurrentBet] = useState(0);
+  	let [wager, setWager] = useState(5);
+  	// Fetch user's balance on component mount
+	useEffect(() => {
+		getCurrentUserProfile().then((profile) => {
+		  if (profile) {
+			setBankValue(profile.get("balance"));
+		  } else {
+			console.log("Profile not found for current user.");
+		  }
+		}).catch((error) => {
+		  console.error("Error fetching current user's profile:", error);
+		});
+	  }, []);
+	
+
 	if (ranFlag) {
 		return;
 	}
 
-	let bankValue = 1000;
-	let currentBet = 0;
-	let wager = 5;
 	let lastWager = 0;
 	let bet = [];
 	let numbersBet = [];
@@ -24,7 +41,7 @@ const RouletteGame = () => {
 	let container = document.createElement('div');
 	container.setAttribute('id', 'container');
 	document.body.append(container);
-		
+
 	startGame();
 
 	let wheel = document.getElementsByClassName('wheel')[0];

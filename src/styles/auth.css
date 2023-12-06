@@ -37,5 +37,31 @@
     max-width: 100%; 
     height: auto;
   }
-  
-  
+ 
+.logout-btn {
+  margin-left: auto;
+  padding: 1em 2em;
+  background: rgb(144, 35, 35);
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-family: "Roboto", sans-serif; 
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.logout-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: gold;
+}
+
+.logout-btn:active {
+  transform: scale(0.95);
+}
+
+.logout-btn {
+  font-size: small;
+  line-height: 1.5;
+}
+ 

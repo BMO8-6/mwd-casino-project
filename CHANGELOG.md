@@ -3,7 +3,16 @@ All notable changes to this project will be documented in this file.
  
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
- 
+
+## [0.4.0] - 2023-12-04
+
+### Added
+
+### Changed
+
+### Fixed
+The issue I was facing was due to the clientSecret not being correctly passed to the Stripe Elements provider when trying to render the PaymentElement. I adjusted it to ensure that the clientSecret, obtained from the backend in Parse after creating a PaymentIntent, is properly set in the component's state and then passed to the Elements provider. This setup allows the Elements provider to initialize correctly with the necessary clientSecret, enabling it to render the PaymentElement for payment confirmation. Additionally, I implemented conditional rendering in the CheckoutForm component to switch between the UI for adding funds and confirming the payment based on whether the clientSecret is available.
+
 ## [0.3.0] - 2023-11-2023
 
 ### Added
