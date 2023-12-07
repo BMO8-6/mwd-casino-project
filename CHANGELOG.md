@@ -10,8 +10,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Logout Function
 - Checkout Ability. User can add to their balance by adding funds to their Profile via the Checkout tab
 - Home Page now displays the current User's profile
-- Netlify website (mwdroulette.netlify.app)
-- Roulette Multiplayer (only works locally because of Netlify's security protocols not allowing servers to be run)
+- Netlify website ([link](https://mwdroulette.netlify.app/))
+- Roulette Multiplayer (only works locally because of Netlify's security protocols not allowing servers to be run). Here's a link to a video proving it's working: ([link](https://drive.google.com/file/d/108Xd1CjPFcZewJS5mTB4LH7wlpM3sg1X/view?usp=drive_link))
   
 ### Changed
 - Lots of files formatting because of addition of tsconfig.json
