@@ -27,7 +27,6 @@ timer.addEventListener('secondsUpdated', function (e: any) {
   } else if (currentSeconds == 25) {
     gameData.stage = GameStages.NO_MORE_BETS
     gameData.value = getRandomNumberInt(0, 36);
-    gameData.value = 10;
     console.log("No More Bets")
     sendStageEvent(gameData)
 
