@@ -9,7 +9,7 @@ import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.js";
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import CheckoutForm from "./Checkout/CheckoutForm.js";
 import { Elements } from '@stripe/react-stripe-js';
-import stripeAppearance from '../styles/stripeStyles';
+import stripeAppearance from '../styles/stripeStyles.js';
 
 
 const Components = ({ stripePromise }) => {

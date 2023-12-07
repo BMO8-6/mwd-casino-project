@@ -17,7 +17,7 @@ function RouletteGame() {
     });
   }, []);
 
-  if (profile.length === 0) {
+  if (!profile) {
     return ( 
       <div>LOADING...</div>
     );

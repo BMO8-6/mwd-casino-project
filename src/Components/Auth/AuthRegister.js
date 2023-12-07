@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { checkUser, createUser } from "./AuthService.js";
+import { checkUser, createUser, createProfile } from "./AuthService.js";
 import AuthForm from "./AuthForm.js";
 import { useNavigate } from "react-router-dom";
 
