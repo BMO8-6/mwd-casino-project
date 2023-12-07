@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import Parse from "parse";
 import Wheel from "./Wheel";
 import Board from "./Board";
 import { List, Button, Progress } from '@mantine/core';
@@ -8,24 +9,10 @@ import { io } from "socket.io-client";
 import { height } from "@mui/system";
 import anime from "animejs";
 import ProgressBarRound from "./ProgressBar";
-import { getAllProfiles } from "../../../Common/Services/Profiles.js";  
 var classNames = require("classnames");
 
-// var userProfile: Parse.Object<Parse.Attributes> | never[] = [];
-// var profiles: Parse.Object<Parse.Attributes>[] = [];
-// getAllProfiles().then((p) => {
-//   profiles = p;
-// });
-
-// for (let i = 0; i < profiles.length; i++) {
-//   if (profiles[i].get("user").get("username") === Parse.User.current()?.get("username")) {
-//     userProfile = profiles[i];
-//     break;
-//   }
-// }
 
 class RouletteWrapper extends React.Component<any, any> {
-  
   rouletteWheelNumbers = [ 
     0, 32, 15, 19, 4, 21, 2, 25,
     17, 34, 6, 27, 13, 36, 11,
@@ -57,9 +44,10 @@ class RouletteWrapper extends React.Component<any, any> {
   };
   socketServer: any;
   animateProgress: any;
+  userProfile: any;
 
   blackNumbers = [ 2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 29, 28, 31, 33, 35 ];
-  constructor(props: { username: string }) {
+  constructor(props: { username: string, profile: Parse.Object }) {
     super(props);
 
     this.onSpinClick = this.onSpinClick.bind(this);
@@ -75,13 +63,18 @@ class RouletteWrapper extends React.Component<any, any> {
   componentDidMount() {
     this.socketServer.open();
     this.socketServer.on('stage-change', (data: string) => {
-      var gameData = JSON.parse(data) as GameData
+      var gameData = JSON.parse(data) as GameData;
       
-      // gameData.wins.map((username, sum) => {
-      //   if (username === userProfile.get('user').get('username')) {
-      //     ;
-      //   }
-      // });
+      gameData.wins.map((name, sum) => {
+        console.log("\n\n\n\n");
+        console.log(name);
+        if (name === this.props.profile.get('user').get('username')) {
+          console.log("update balance");
+          let balance = this.props.profile.get('balance');
+          this.props.profile.set('balance', balance + sum);
+          this.saveParseObject();
+        }
+      });
       console.log(gameData);
       this.setGameData(gameData);
     });
@@ -93,6 +86,16 @@ class RouletteWrapper extends React.Component<any, any> {
   }
   componentWillUnmount() {
     this.socketServer.close();
+  }
+
+  saveParseObject() {
+    try{
+      //Save the Object
+      let result = this.props.profile.save();
+      alert('Object updated with objectId: ' + result.id);
+    } catch(error) {
+        alert('Failed to update object, with error code: ' + error.message);
+    }
   }
   setGameData(gameData: GameData) { 
     if (gameData.stage === GameStages.NO_MORE_BETS) { // PLACE BET from 25 to 32
