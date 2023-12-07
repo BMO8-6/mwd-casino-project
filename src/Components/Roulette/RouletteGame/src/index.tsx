@@ -3,31 +3,28 @@ import { Button, TextInput } from '@mantine/core';
 import React, { useEffect, useState } from "react";
 import Parse from "parse";
 import RouletteWrapper from "./RouletteWrapper";
-import { getAllProfiles } from "../../../Common/Services/Profiles.js";  
+import { getCurrentUserProfile } from "../../../Common/Services/Profiles.js";  
 import "../../../../styles/roulette.css";
 
 function RouletteGame() {
   let usernameValue = Parse.User.current()?.get('username');
   var userProfile;
-  const [profiles, setProfiles] = useState([]);
+  const [profile, setProfiles] = useState(null);
 
   useEffect(() => {
-    getAllProfiles().then((profiles) => {
-      setProfiles(profiles);
+    getCurrentUserProfile().then((profile) => {
+      setProfiles(profile);
     });
   }, []);
 
-  if (profiles.length === 0) {
+  if (profile.length === 0) {
     return ( 
       <div>LOADING...</div>
     );
   }
 
-  for (let i = 0; i < profiles.length; i++) {
-    if (profiles[i].get("user").get("username") === Parse.User.current()?.get("username")) {
-      userProfile = profiles[i];
-      break;
-    }
+  if (profile.get("user").get("username") === Parse.User.current()?.get("username")) {
+      userProfile = profile;
   }
   
   return (
