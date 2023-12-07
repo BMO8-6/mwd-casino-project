@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Balance from "./Balance.js";
 import LogoutButton from "../Auth/AuthLogout.js"
+import logo from '../../images/logo.jpg';
 import "../../styles/banner.css";
 
 const BannerView = () => {
@@ -11,7 +12,7 @@ const BannerView = () => {
     <div className="banner">
       <div className="logo">
         <Link to="/">
-          <img src={require("../../images/logo.jpg")} alt="logo"/>
+          <img src={logo} alt="logo"/>
         </Link>
         <Balance />
       </div>
@@ -25,5 +26,6 @@ const BannerView = () => {
     </div>
   );
 };
+
 
 export default BannerView;

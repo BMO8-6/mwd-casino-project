@@ -1,8 +1,11 @@
-div.rouletteMain {
+html,
+body {
   margin: 0;
   padding: 0;
+}
+body {
   font-family: sans-serif;
-  background-image: url(../Components/Roulette/RouletteGame/src/assets/felt.png),
+  background-image: url(assets/felt.png),
     -webkit-radial-gradient(50% 40%, circle farthest-corner, #527c14, #243a0a);
   background-size: 180px 180px, auto;
   background-attachment: fixed;
@@ -11,18 +14,21 @@ div.rouletteMain {
   -webkit-tap-highlight-color: transparent;
   margin: 0;
   padding: 0;
-  transform: scale(1.0);
+  transform: scale(0.9);
   transform-origin: 0 0;
+}
+
+#app {
   contain: layout style;
   overflow: visible;
 }
 
-div.roulette-wheel {
+.roulette-wheel {
   float: right;
   width: 380px;
   height: 380px;
   border-radius: 100%;
-  background: url(../Components/Roulette/RouletteGame/src/assets/roulette_1.jpg);
+  background: url(assets/roulette_1.jpg);
   background-size: 380px 380px;
   shape-outside: circle(190px);
   margin: 0 0 1em 1em;
@@ -33,27 +39,27 @@ div.roulette-wheel {
 }
 
 @media screen and (max-width: 2640px) {
-  div.roulette-wheel {
+  .roulette-wheel {
     float: none;
     margin: 1em auto;
   }
 }
 
 @media screen and (max-width: 375px) {
-  div.rouletteMain {
+  body {
     padding: 0 20px;
   }
-  div.roulette-wheel {
+  .roulette-wheel {
     float: none;
     left: 30px;
   }
 }
 
-div.roulette-wheel .layer-2,
-div.roulette-wheel .layer-3,
-div.roulette-wheel .layer-4,
-div.roulette-wheel .layer-5,
-div.ball-container {
+.roulette-wheel .layer-2,
+.roulette-wheel .layer-3,
+.roulette-wheel .layer-4,
+.roulette-wheel .layer-5,
+.ball-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -62,40 +68,40 @@ div.ball-container {
   background-size: 380px 380px;
 }
 
-div.roulette-wheel .layer-2,
-div.roulette-wheel .layer-4,
-div.ball-container {
+.roulette-wheel .layer-2,
+.roulette-wheel .layer-4,
+.ball-container {
   will-change: transform;
 }
 
-div.roulette-wheel .layer-2 {
-  background-image: url(../Components/Roulette/RouletteGame/src/assets/roulette_2.png);
+.roulette-wheel .layer-2 {
+  background-image: url(assets/roulette_2.png);
 }
 
-div.roulette-wheel .layer-3 {
-  background-image: url(../Components/Roulette/RouletteGame/src/assets/roulette_3.png);
+.roulette-wheel .layer-3 {
+  background-image: url(assets/roulette_3.png);
 }
 
-div.roulette-wheel .layer-4 {
-  background-image: url(../Components/Roulette/RouletteGame/src/assets/roulette_4.png);
+.roulette-wheel .layer-4 {
+  background-image: url(assets/roulette_4.png);
 }
 
-div.roulette-wheel .layer-5 {
-  background-image: url(../Components/Roulette/RouletteGame/src/assets/roulette_5.png);
+.roulette-wheel .layer-5 {
+  background-image: url(assets/roulette_5.png);
 }
 
-div.roulette-wheel svg {
+.roulette-wheel svg {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-div.roulette-wheel circle {
+.roulette-wheel circle {
   cursor: pointer;
   fill: transparent;
 }
 
-div.roulette-wheel .ball {
+.roulette-wheel .ball {
   position: absolute;
   width: 14px;
   height: 14px;
@@ -110,16 +116,16 @@ div.roulette-wheel .ball {
 }
 
 
-div.roulette-board {
+.roulette-board {
   float: none;
   display: flow-root;
   width: 1000px;
   height: 420px;
-  background: url(../Components/Roulette/RouletteGame/src/assets/Board.png);
+  background: url(assets/Board.png);
   background-size: 1000px auto;
   margin: 0 auto;
 }
-div.roulette-board-grid-numbers {
+.roulette-board-grid-numbers {
   display: grid;
   width: auto;
   height: 216px;
@@ -128,7 +134,7 @@ div.roulette-board-grid-numbers {
   margin-top: 27px;
   margin-bottom: 17px;
 }
-div.roulette-board-grid-other {
+.roulette-board-grid-other {
   display: grid;
   width: auto;
   height: 216px;
@@ -137,14 +143,16 @@ div.roulette-board-grid-other {
   margin-top: 27px;
   margin-bottom: 17px;
 }
-/* div.rouletteMain table,
-div.rouletteMain td,
-div.rouletteMain th {
-  //border: 4px solid #fff700;
-  //border-collapse: collapse;
-} */
+#app table,
+#app td,
+#app th {
+  /*border: 4px solid #fff700;
+  border-collapse: collapse;*/
+}
 
-ul.rouletteBoard {
+
+
+ ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -155,13 +163,13 @@ ul.rouletteBoard {
   transform: translate(-50%, -50%);
 }
 
-ul.rouletteBoard li.board-chip {
+ ul li.board-chip {
   list-style: none;
   margin: 0 15px;
   display: block;
 }
 
-ul.rouletteBoard li.board-chip div {
+ul li.board-chip div {
   position: relative; 
   display: block;
   width: 60px;
@@ -180,7 +188,7 @@ ul li div::before {
   content: '';
 }
 
-ul.rouletteBoard li.board-chip div::before {
+ul li.board-chip div::before {
   content: '';
   position: absolute;
   top: 0;
@@ -194,52 +202,52 @@ ul.rouletteBoard li.board-chip div::before {
   z-index: -1;
 }
 
-ul.rouletteBoard li.board-chip div:hover::before {
+ ul li.board-chip div:hover::before {
   transform: scale(1.1);
   box-shadow: 0 0 15px #ffee10;
 }
 
-ul.rouletteBoard li.board-chip div:hover {
+ul li.board-chip div:hover {
   color: #ffee10;
   box-shadow: 0 0 5px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
-ul.rouletteBoard li.board-chip div.chip_selected {
+ ul li.board-chip div.chip_selected {
   color: #ffee10;
   box-shadow: 0 0 20px #ffee10;
   text-shadow: 0 0 5px #ffee10;
 }
-ul.rouletteBoard li.board-chip div.chip-100 {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_black.png') no-repeat;
+ul li.board-chip div.chip-100 {
+  background:url('assets/chip_black.png') no-repeat;
   background-size: 60px 60px;
 }
-ul.rouletteBoard li.board-chip div.chip-20 {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_blue.png') no-repeat;
+ul li.board-chip div.chip-20 {
+  background:url('assets/chip_blue.png') no-repeat;
   background-size: 60px 60px;
 }
-ul.rouletteBoard li.board-chip div.chip-10 {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_orange.png') no-repeat;
+ul li.board-chip div.chip-10 {
+  background:url('assets/chip_orange.png') no-repeat;
   background-size: 60px 60px;
 }
-ul.rouletteBoard li.board-chip div.chip-5 {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_purple.png') no-repeat;
+ul li.board-chip div.chip-5 {
+  background:url('assets/chip_purple.png') no-repeat;
   background-size: 60px 60px;
 }
 
 div.chip-100-placed {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_black.png') no-repeat;
+  background:url('assets/chip_black.png') no-repeat;
   background-size: 30px 30px;
 }
 div.chip-20-placed {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_blue.png') no-repeat;
+  background:url('assets/chip_blue.png') no-repeat;
   background-size: 30px 30px;
 }
 div.chip-10-placed {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_orange.png') no-repeat;
+  background:url('assets/chip_orange.png') no-repeat;
   background-size: 30px 30px;
 }
 div.chip-5-placed {
-  background:url('../Components/Roulette/RouletteGame/src/assets/chip_purple.png') no-repeat;
+  background:url('assets/chip_purple.png') no-repeat;
   background-size: 30px 30px;
 }
 .roulette-actions{
@@ -247,21 +255,25 @@ div.chip-5-placed {
   position: relative;
   height: 150px;
 }
-div.chipValue {
+.chipValue {
   position: relative;
 }
-div.chipValueImage { 
+.chipValueImage { 
   position: absolute;
   width:30px;
   height:30px;
 }
-div.chipSum {
+.chipSum {
   position:absolute;
   font-weight: 900;
   font-size:20px;
   -webkit-text-stroke: 1px blue;
   -webkit-text-fill-color: white;
   z-index:10;
+}
+.auth-user { 
+  width: 250px;
+  margin: 300px auto;
 }
 .progressBar { 
   width:400px;
@@ -334,38 +346,3 @@ div.chipSum {
 .hideElementsTest {
  /* visibility: hidden;*/
 }
-
-/* media query styles are only applied if the conditions are met */
-/* @media all and (max-width: 1000px) {
-	#container{
-		display: flex;
-		justify-content: center;
-		background-color: #016D29;
-		height: 1000px;
-		padding: 20px;
-		color: #fff;
-	}
-
-	.wheel {
-		position: absolute;
-		left: 27%;
-	}
-
-	// betting table
-	#betting_board{
-		position: relative;
-		top: 325px;
-	}
-
-	.chipDeck, .bankContainer{
-		position: absolute;
-		left: 95%;
-		top: 550px;	
-	}
-
-	.spinBtn{
-		position: absolute;
-		margin-top: 806px;
-		margin-left: 235px;
-	}
-} */

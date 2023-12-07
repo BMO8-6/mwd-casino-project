@@ -3,13 +3,13 @@ import HomeApp from "./Home/HomeApp.js";
 import Blackjack from "./Blackjack/BlackjackApp.js";
 import Roulette from "./Roulette/RouletteApp.js";
 import AuthModule from "./Auth/Auth.js";
-import AuthRegister from "./Auth/AuthRegister";
-import AuthLogin from "./Auth/AuthLogin";
+import AuthRegister from "./Auth/AuthRegister.js";
+import AuthLogin from "./Auth/AuthLogin.js";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute.js"; 
 import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import CheckoutForm from "./Checkout/CheckoutForm.js";
 import { Elements } from '@stripe/react-stripe-js';
-import stripeAppearance from '../styles/stripeStyles';
+import stripeAppearance from '../styles/stripeStyles.js';
 
 
 const Components = ({ stripePromise }) => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { checkUser, loginUser } from "./AuthService";
-import AuthForm from "./AuthForm";
+import { checkUser, loginUser } from "./AuthService.js";
+import AuthForm from "./AuthForm.js";
 import { useNavigate } from "react-router-dom";
 import "../../styles/auth.css";
 
@@ -41,9 +41,7 @@ const AuthLogin = () => {
 
   const onChangeHandler = (e) => {
     e.preventDefault();
-    console.log(e.target);
     const { name, value: newValue } = e.target;
-    console.log(newValue);
 
     setCurrentUser({
       ...currentUser,

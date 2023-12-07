@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkUser } from "../Auth/AuthService";
+import { checkUser } from "../Auth/AuthService.js";
 
 const ProtectedRoute = ({ element: Component, ...rest }) => {
   const navigate = useNavigate();
