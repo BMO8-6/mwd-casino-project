@@ -109,8 +109,6 @@ const HomeView = () => {
     ));
   };
 
-  if (document.getElementById('container')) document.getElementById('container').style.display = 'none';
-
   return (
     <div className="profile">
       <h2>{user.get("firstName")} {user.get("lastName")}</h2>

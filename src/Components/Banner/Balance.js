@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Parse from "parse";
 import { getAllProfiles } from "../Common/Services/Profiles.js";  
 
 const Balance = () => {
@@ -18,9 +19,14 @@ const Balance = () => {
       <div className="balance">Current Balance: LOADING...</div>
     );
   }
-  return (
-    <div className="balance">Current Balance: ${profiles[0].get("balance")}</div>
-  );
+
+  for (let i = 0; i < profiles.length; i++) {
+    if (profiles[i].get("user")._getId() === Parse.User.current()._getId()) {
+      return (
+        <div className="balance">Current Balance: ${profiles[i].get("balance")}</div>
+      );
+    }
+  }
 };
 
 export default Balance;

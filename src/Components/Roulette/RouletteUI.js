@@ -1,5 +1,5 @@
 import React from "react";
-import RouletteGame from "./RouletteGame";
+import RouletteGame from "./RouletteGame/src/index.tsx";
 const RouletteUI = ({ onClick }) => {
   console.log("Displaying RouletteView");
 
