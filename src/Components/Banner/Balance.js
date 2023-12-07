@@ -4,7 +4,7 @@ import { getAllProfiles } from "../Common/Services/Profiles.js";
 
 const Balance = () => {
   const [profiles, setProfiles] = useState([]);
-
+  
   useEffect(() => {
     getAllProfiles().then((profiles) => {
       setProfiles(profiles);

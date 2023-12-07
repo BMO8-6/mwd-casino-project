@@ -62,19 +62,23 @@ class RouletteWrapper extends React.Component<any, any> {
 
   componentDidMount() {
     this.socketServer.open();
-    this.socketServer.on('stage-change', (data: string) => {
+    this.socketServer.on('stage-change', async (data: string) => {
       var gameData = JSON.parse(data) as GameData;
-      
-      gameData.wins.map((name, sum) => {
-        console.log("\n\n\n\n");
-        console.log(name);
-        if (name === this.props.profile.get('user').get('username')) {
-          console.log("update balance");
-          let balance = this.props.profile.get('balance');
-          this.props.profile.set('balance', balance + sum);
-          this.saveParseObject();
+
+      if (gameData.stage === 2) {
+        for (let i = 0; i < gameData.wins.length; i++) {
+          if (gameData.wins[i].username === this.props.profile.get('user').get('username')) {
+            let balance = this.props.profile.get('balance');
+            this.props.profile.set('balance', balance + gameData.wins[i].sum);
+            this.saveParseObject();
+          }
         }
-      });
+        let query = new Parse.Query("Profile");
+        let profileObject = await query.get(this.props.profile._getId());
+        document.getElementsByClassName('balance')[0].innerHTML = `Current Balance: $${profileObject.get('balance')}`;
+        this.clearBet();
+      }
+
       console.log(gameData);
       this.setGameData(gameData);
     });
@@ -84,6 +88,7 @@ class RouletteWrapper extends React.Component<any, any> {
       }); 
     });
   }
+
   componentWillUnmount() {
     this.socketServer.close();
   }
@@ -92,9 +97,9 @@ class RouletteWrapper extends React.Component<any, any> {
     try{
       //Save the Object
       let result = this.props.profile.save();
-      alert('Object updated with objectId: ' + result.id);
+      console.log('Object updated with objectId: ' + result.id);
     } catch(error) {
-        alert('Failed to update object, with error code: ' + error.message);
+      alert('Failed to update object, with error code: ' + error.message);
     }
   }
   setGameData(gameData: GameData) { 
@@ -115,7 +120,7 @@ class RouletteWrapper extends React.Component<any, any> {
     }
   }
 
-  onCellClick(item: Item) {
+  async onCellClick(item: Item) {
     //console.log("----");
     var currentChips = this.state.chipsData.placedChips;
 
@@ -131,6 +136,12 @@ class RouletteWrapper extends React.Component<any, any> {
       currentChip.sum += currentChips.get(item).sum;
     }
 
+    let query = new Parse.Query("Profile");
+    let profileObject = await query.get(this.props.profile._getId());
+    this.props.profile.set('balance', profileObject.get('balance') - chipValue);
+    this.saveParseObject();
+    document.getElementsByClassName('balance')[0].innerHTML = `Current Balance: $${profileObject.get('balance')}`;
+
     //console.log(currentChips[item]);
     currentChips.set(item, currentChip);
     this.setState({
@@ -140,7 +151,7 @@ class RouletteWrapper extends React.Component<any, any> {
       }
     });
   }
-  onChipClick(chip: number | null) {
+  async onChipClick(chip: number | null) {
     if (chip != null) {
       this.setState({
         chipsData: {
