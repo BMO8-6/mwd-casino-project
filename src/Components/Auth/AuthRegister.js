@@ -26,17 +26,25 @@ const AuthRegister = () => {
 
   // useEffect that run when changes are made to the state variable flags
   useEffect(() => {
-    // checkUser() ? history.push("/home"): null;
     if (newUser && add) {
       createUser(newUser).then((userCreated) => {
         if (userCreated) {
-          alert(
-            `${userCreated.get("firstName")}, you successfully registered!`
-          );
-          navigate("/");
+          createProfile(userCreated).then((profileCreated) => { // create profile 
+            alert(
+              `${userCreated.get("firstName")}, you successfully registered and your profile has been created!`
+            );
+            navigate("/");
+          }).catch((error) => {
+        
+            console.error('Profile creation failed:', error);
+            alert('Registration successful, but failed to create your profile.');
+          });
         }
-        // TODO: redirect user to main app
         setAdd(false);
+      }).catch((error) => {
+        // Handle user registration error
+        console.error('User registration failed:', error);
+        alert('Registration failed, please try again.');
       });
     }
   }, [navigate, newUser, add]);
@@ -69,5 +77,4 @@ const AuthRegister = () => {
     </div>
   );
 };
-
 export default AuthRegister;
